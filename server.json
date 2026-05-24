@@ -1,0 +1,15 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "com.bidsparq/mcp",
+  "title": "BidSparq",
+  "description": "Search U.S. federal, state, and local RFPs, subaward primes, pricing, and vendor data.",
+  "websiteUrl": "https://bidsparq.com/learn/mcp-setup",
+  "version": "0.2.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://bidsparq.com/mcp"
+    }
+  ],
+  "_comment": "stdio npm package will be added on next 0.1.2 release once package.json includes mcpName field"
+}
