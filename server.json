@@ -4,12 +4,38 @@
   "title": "BidSparq",
   "description": "Search U.S. federal, state, and local RFPs, subaward primes, pricing, and vendor data.",
   "websiteUrl": "https://bidsparq.com/learn/mcp-setup",
-  "version": "0.2.0",
+  "version": "0.2.1",
+  "repository": {
+    "url": "https://github.com/n0edlg/bidsparq-mcp-server",
+    "source": "github"
+  },
   "remotes": [
     {
       "type": "streamable-http",
       "url": "https://bidsparq.com/mcp"
     }
   ],
-  "_comment": "stdio npm package will be added on next 0.1.2 release once package.json includes mcpName field"
+  "packages": [
+    {
+      "registryType": "npm",
+      "identifier": "bidsparq-mcp-server",
+      "version": "0.1.2",
+      "transport": {
+        "type": "stdio"
+      },
+      "environmentVariables": [
+        {
+          "name": "BIDSPARQ_API_KEY",
+          "description": "Your bsq_live_... API key from https://bidsparq.com/settings/api-keys",
+          "isRequired": true,
+          "isSecret": true
+        },
+        {
+          "name": "BIDSPARQ_BASE_URL",
+          "description": "Override the API base URL (defaults to https://bidsparq.com)",
+          "isRequired": false
+        }
+      ]
+    }
+  ]
 }

@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.1.2 (2026-05-25)
+
+- Add `mcpName: com.bidsparq/mcp` field to package.json so the Official MCP
+  Registry can cross-link the npm package to our DNS-verified namespace.
+- Bump server version reported via MCP `initialize` to match.
+- Source now public at https://github.com/n0edlg/bidsparq-mcp-server.
+
 ## 0.1.1 (2026-05-24)
 
 Server-side bug fixes (no client API changes — re-installs are optional).
