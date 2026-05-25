@@ -1,6 +1,6 @@
 {
   "name": "bidsparq-mcp-server",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "mcpName": "com.bidsparq/mcp",
   "description": "BidSparq MCP server — query federal RFPs, subaward primes, pricing percentiles, and wired-RFP signals from Claude Desktop, Claude Code, Cursor, and other MCP-compatible AI clients.",
   "keywords": [

@@ -20,7 +20,7 @@ import {
 } from "@modelcontextprotocol/sdk/types.js";
 
 const SERVER_NAME = "bidsparq";
-const SERVER_VERSION = "0.1.2";
+const SERVER_VERSION = "0.1.3";
 const DEFAULT_BASE_URL = "https://bidsparq.com";
 
 function log(...args: unknown[]) {

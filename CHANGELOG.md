@@ -1,5 +1,49 @@
 # Changelog
 
+## 0.1.3 (2026-05-25)
+
+Tool count: **18 → 27**. Server-side only — the npm package is a thin proxy,
+so `npx -y bidsparq-mcp-server@latest` picks up new tools without a re-install.
+This release bumps the version reported via the MCP `initialize` handshake +
+the Registry listing (com.bidsparq/mcp → 0.3.0).
+
+**Sprint 1 — Personal relevance** (uses BidSparq's 75K-row contractor×RFP
+AI-scoring engine; signed-in OAuth user required):
+
+- **`get_my_top_matches`** — the user's highest-AI-scored ACTIVE RFPs with
+  ai_score + llm_pwin (Shipley) + decision verdict + reason. The "what should
+  I bid on right now?" tool.
+- **`explain_my_fit`** — given an rfp_id, returns the user's personalized
+  score breakdown (factor_scores, compliance_gaps, wired_risk). Answers
+  "why did this RFP score X?".
+- **`find_similar_active_rfps`** — given an rfp_id, query-by-example via
+  OpenAI embeddings + pgvector HNSW. Finds RFPs whose scope reads like the
+  source even when titles+NAICS differ.
+
+**Sprint 2 — Competitive analytics** (built on 164K federal awards):
+
+- **`competitive_landscape`** — top winners, win concentration (top-1/3/10
+  share %), avg bidders, set-aside mix, competition extent. The "who am I
+  really up against?" tool.
+- **`set_aside_analysis`** — per-set-aside breakdown: award count, avg
+  bidders, top vendor, easier-than-baseline flag. Use to evaluate
+  certification ROI.
+- **`upcoming_deadlines`** — active RFPs closing in the next N days, filter
+  by NAICS/agency/state/set_aside_only.
+
+**Historical intelligence** (built on the 1.6M closed-RFP corpus):
+
+- **`vendor_win_history`** — per-vendor federal award history. By UEI exact or
+  vendor_name fuzzy. Returns per-award detail + top agencies + cadence.
+- **`budget_intelligence`** — p25/median/p75 PRE-RFP posted budget ranges.
+  Distinct from `analyze_pricing_intel` (POST-award $).
+- **`contract_duration_intel`** — typical contract length from 1.6M closed
+  RFPs. Parses '1 year' / '36 months' / '5 years' patterns.
+
+System prompts on all 3 BidSparq chat surfaces (main /ai, public landing,
+per-RFP) updated to surface the new tools so the LLM actually reaches for
+them.
+
 ## 0.1.2 (2026-05-25)
 
 - Add `mcpName: com.bidsparq/mcp` field to package.json so the Official MCP
