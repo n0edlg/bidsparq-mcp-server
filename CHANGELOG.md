@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.4 (2026-05-25)
+
+Tool count: **27 → 31**. Closes 4 of the GovTribe-comparison gaps using real
+data (no fake claims). Server-side only — npm clients pick up new tools
+automatically on next `tools/list`.
+
+- **`search_federal_grants`** — query grants.gov + 40K historical grants in
+  BidSparq's archive. Filters: keyword, agency, state, due-date range,
+  active vs historical.
+- **`list_agencies`** — federal agency directory with per-agency award count,
+  total $, top NAICS, last-award-date. Optional NAICS filter to show only
+  agencies buying in a given space.
+- **`naics_lookup`** — Census 2022 NAICS taxonomy (2,125 codes, levels 2–6).
+  Lookup by exact code or fuzzy title keyword. Returns parent_code for
+  hierarchy navigation.
+- **`psc_lookup`** — acquisition.gov Product Service Codes April 2025
+  (3,837 codes, 2,540 currently active). Lookup by code, keyword, or
+  category prefix (e.g. 'D' for IT services, '70-79' for IT equipment).
+
 ## 0.1.3 (2026-05-25)
 
 Tool count: **18 → 27**. Server-side only — the npm package is a thin proxy,
