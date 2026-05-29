@@ -1,8 +1,8 @@
 {
   "name": "bidsparq-mcp-server",
-  "version": "0.1.4",
+  "version": "0.1.7",
   "mcpName": "com.bidsparq/mcp",
-  "description": "BidSparq MCP server — query federal RFPs, subaward primes, pricing percentiles, and wired-RFP signals from Claude Desktop, Claude Code, Cursor, and other MCP-compatible AI clients.",
+  "description": "BidSparq MCP server — query federal RFPs, subaward primes, pricing percentiles, wired-RFP signals, buyer-side procurement-officer contacts (Beacon), and federal contract vehicles / GWACs / GSA Schedules / BPAs from Claude Desktop, Claude Code, Cursor, and other MCP-compatible AI clients.",
   "keywords": [
     "mcp",
     "model-context-protocol",

@@ -1,5 +1,70 @@
 # Changelog
 
+## 0.1.7 (2026-05-29)
+
+Tool count: **49 → 55**. Six new federal contract vehicle tools — `find_contract_vehicles`, `get_vehicle_details`, `get_vehicle_orders`, `find_my_vehicle_opportunities` (Pro+), `vehicle_expiration_alerts` (Pro+), `analyze_vehicle_competition` (Pro Max). Backed by 60,000+ active federal IDVs ingested from USAspending — GWACs, GSA Schedules / FSS, BPAs, IDCs, BOAs. Closes the IDV / contract vehicle gap vs GovTribe at public pricing.
+
+Server-side additions only — existing installations pick these up automatically on next `tools/list`. NAICS + set-aside coverage on vehicles is being enriched in background; full coverage expected within a few hours.
+
+## 0.1.6 (2026-05-28)
+
+Tool count: **47 → 49**. Two new Beacon contact-graph tools (`find_agency_contacts`, `get_contact_profile`) backed by 85,978 buyer-side procurement officers ingested from real solicitation history.
+
+## 0.1.5 (2026-05-26)
+
+Tool count: **31 → 47**. Server-side additions only — the npm package is a
+thin proxy that fetches tools dynamically on `tools/list`, so existing
+installations pick these up automatically without re-install. This release
+bumps the version reported via `initialize` + the Registry listing so the
+new count is reflected in marketing surfaces.
+
+**Sprint — Pursuits / pipeline (Pro Max only).** Brings the in-app Pursuits
+feature to MCP clients so users can manage their bid pipeline from Claude
+Desktop, Cursor, ChatGPT, etc.
+
+Read tools:
+- **`search_my_pursuits`** — filter pipeline by stage, agency, state, due
+  window, value range, overdue flag.
+- **`get_pursuit_details`** — full pursuit state (RFP fields + custom_fields
+  + recent notes + activity log + files + next action + AI score).
+- **`search_my_notes`** — full-text search across all notes the user has
+  written. Returns snippets with pursuit context.
+- **`get_pipeline_forecast`** — Shipley-weighted value, per-stage breakdown,
+  12-mo outcomes, conversion rates.
+- **`find_overdue_actions`** — overdue / due-soon next-actions and RFP
+  deadlines.
+- **`get_my_win_loss_stats`** — win rate, avg won/lost $, top weak factors,
+  top dismissal reasons, top competitors who beat the user.
+- **`compare_to_my_history`** — given an RFP id, find user's previously
+  won/lost pursuits most similar to it.
+- **`get_recent_activity`** — pipeline activity feed including system events
+  (agency due-date moves, new attachments).
+- **`get_my_daily_briefing`** — one-call morning brief: needs-attention +
+  recent activity + top unsaved matches.
+- **`get_contractor_profile`** — user's BidSparq profile with audit hints
+  (gaps in NAICS, set-asides, SAM UEI, contract-size range).
+- **`extract_evaluation_factors`** — Section M (evaluation criteria) for
+  any RFP with weights + key dates + budget disclosure status.
+
+Write tools (selective-safe-writes pattern — low-risk only):
+- **`save_pursuit`** — save/unsave an RFP to pipeline.
+- **`set_next_action`** — set the next-action date + description.
+- **`complete_next_action`** — mark next action done, snapshot to log.
+- **`set_probable_value`** — set/clear the user's deal-size estimate.
+- **`advance_stage`** — FORWARD-only stage move (new_match → reviewing →
+  preparing → submitted). Terminal stages (won/lost/no_bid) are rejected
+  with `action_required:"user_clicks_outcome_modal"` so the LLM tells the
+  user to use the UI outcome modal (which captures contract value, debrief
+  notes, weak factors).
+
+Audit: all AI-originated writes log a `bid_activities` row with
+`payload.via = "ai_assistant"` so the user can grep their activity log for
+AI-originated changes.
+
+Tenant isolation verified: `contractorId` is server-resolved from the API
+key, never accepted from tool args; every user-scoped query filters by
+`contractor_id = $1` as a bound parameter.
+
 ## 0.1.4 (2026-05-25)
 
 Tool count: **27 → 31**. Closes 4 of the GovTribe-comparison gaps using real

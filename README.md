@@ -12,8 +12,10 @@ Query [BidSparq](https://bidsparq.com)'s federal RFP, subaward, pricing, and ven
 - Hybrid RFP search (keyword + semantic + full-text PDF) across 130+ sources
 - Past contract awards, recompete tracking, agency profiles, seasonal patterns
 - SAM-registered vendor lookup (NAICS, set-asides, certifications, UEI, location)
+- **Buyer-side procurement-officer contact graph** (Beacon-equivalent): find contacts at a given agency, deep-dive on any contact's posting history (85,978 procurement officers from real solicitation activity)
+- **Federal contract vehicle intelligence**: 60,000+ active GWACs, GSA Schedules / FSS, BPAs, IDCs, BOAs — search by NAICS, agency, set-aside, vehicle type; get personalized recommendations; track expiration windows as recompete signals
 
-All 18 tools available from your AI client. Same 50 messages/day cap as in-app chat.
+All 55 tools available from your AI client. Unlimited usage on Pro Max subject to fair-use limits (per-minute / per-hour / daily cost), shared with in-app chat.
 
 ## Install
 
@@ -105,7 +107,7 @@ After install, ask your AI client:
 
 - **`Invalid BIDSPARQ_API_KEY`** — Key is wrong, expired, or revoked. Create a new one in your settings.
 - **`Pro Max plan required`** — Upgrade at [bidsparq.com/plan](https://bidsparq.com/plan).
-- **`Daily message limit reached`** — Pro Max plans have 50 messages/day shared between in-app chat and MCP. Resets at midnight UTC.
+- **`Rate limit exceeded`** — Pro Max has fair-use limits to protect against runaway scripts (per-minute: 60, per-hour: 500, daily cost cap). The 429 response includes a `Retry-After` header. Most users will never see this; if you do, slow your loop or contact support.
 - **`BidSparq MCP is not yet enabled in your account`** — MCP is in staged rollout. Email hello@bidsparq.com for early access.
 
 ## Privacy

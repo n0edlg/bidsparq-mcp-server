@@ -2,9 +2,9 @@
   "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
   "name": "com.bidsparq/mcp",
   "title": "BidSparq",
-  "description": "31 tools for U.S. federal/state/local RFPs, awards, subawards, vendor intel, NAICS+PSC lookups.",
+  "description": "55 tools for federal/state/local RFPs, awards, vendors, contact graph, contract vehicles, pursuits.",
   "websiteUrl": "https://bidsparq.com/learn/mcp-setup",
-  "version": "0.3.1",
+  "version": "0.3.4",
   "repository": {
     "url": "https://github.com/n0edlg/bidsparq-mcp-server",
     "source": "github"
@@ -19,7 +19,7 @@
     {
       "registryType": "npm",
       "identifier": "bidsparq-mcp-server",
-      "version": "0.1.4",
+      "version": "0.1.7",
       "transport": {
         "type": "stdio"
       },
